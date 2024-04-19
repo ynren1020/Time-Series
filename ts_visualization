@@ -1,0 +1,32 @@
+# one week before tt visit ----
+lt <- td |>
+  mutate(patient = as.character(pt)) |>
+  filter(as.character(pt) == "02" & trt == "ctt") |>
+  select(patient, lower_threshold_left, lower_threshold_right, upper_threshold_left, upper_threshold_right)
+
+rts_cs <- rts2|>
+  mutate(patient = as.character(patient)) |>
+  filter(between(as.Date(date), as.Date('2022-05-09'), as.Date('2022-05-16'))) |>
+  full_join(lfpt, by = "pt")
+
+# create plot ----
+leftcol <- "#59A719"
+rightcol <- '#008EFF'
+
+annotation <- data.frame(x = rts_cs$time2[c(2:3,22)], y = c(rts_cs$power_left[2]+25,rts_cs$power_right[3]-20, max(rts_cs$power_left)), label = c("Left", "Right", "ctt: 2A"))
+
+both <- ggplot(data = rts_cs) +
+  geom_line(aes(x = time2,y=power_left), size = 1.0 , color = leftcol) + 
+  geom_line(aes(x = time2,y=lthreshold_left), size = 0.5 , linetype = "dashed", color = leftcol) + 
+  geom_line(aes(x = time2,y=uthreshold_left), size = 0.5 , linetype = "dashed", color = leftcol) +
+  geom_line(aes(x = time2,y=lpower_right), size = 1.0, color = rightcol) + 
+  geom_line(aes(x = time2,y=lower_threshold_right), size = 0.5 , linetype = "dashed", color = rightcol) + 
+  geom_line(aes(x = time2,y=upper_threshold_right), size = 0.5 , linetype = "dashed", color = rightcol) +
+  #create day and night period
+  geom_rect(data = dayRanges, aes(xmin = from, xmax = to, ymin = -Inf, ymax = Inf), alpha = 0.2) +
+  scale_y_continuous(
+    name = "Power") +
+  labs(x = "Day Time Shaded (9:00AM - 18:00PM)") + 
+  scale_x_datetime(labels = date_format("%Y-%m-%d %H:%M:%S", tz = "Asia/Tokyo"), breaks=date_breaks("4 hours")) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggsave("../ts_preonewk_allwk.png",width = 12,height = 6, dpi = 300)
