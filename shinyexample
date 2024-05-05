@@ -1,0 +1,52 @@
+library(shiny)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+
+# Define UI 
+ui <- fluidPage(
+titlePanel("Visualization"),
+sidebarLayout(
+sidebarPanel(
+fileInput("td_file", "Upload td File"),
+fileInput("rts2_file", "Upload rts2 File"),
+fileInput("lfpt_file", "Upload lfpt File"),
+actionButton("plot_button", "Plot")
+),
+mainPanel(
+  plotOutput("plot")
+  )
+)
+)
+
+# Define server logic 
+server <- function(input, output) {
+observeEvent(input$plot_button, {
+# Read td data
+req(input$td_file)
+td <- read.csv(input$td_file$datapath)
+
+# Read rts2 data
+req(input$rts2_file)
+rts2 <- read.csv(input$rts2_file$datapath)
+
+# Read lfpt data
+req(input$lfpt_file)
+lfpt <- read.csv(input$lfpt_file$datapath)
+
+# Data processing 
+lt <- td |>
+mutate(patient = as.character(pt)) |>
+filter(as.character(pt) == "02" & trt == "ctt") |>
+select(patient, lower_threshold_left, lower_threshold_right, upper_threshold_left, upper_threshold_right)
+
+rts_cs <- rts2 |>
+mutate(patient = as.character(patient)) |>
+filter(between(as.Date(date), as.Date('2022-05-09'), as.Date('2022-05-16'))) |>
+full_join(lfpt, by = "pt")
+
+# plotting
+leftcol <- "#59A719"
+rightcol <- "#008EFF"
+
+annotation <- data.frame(x = rts_cs$time2
