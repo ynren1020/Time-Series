@@ -1,0 +1,80 @@
+Introduction to Time Series Analysis and Forecasting by Douglas C. Montgomery, Cheryl L. Jennings, Murat Kulahci
+
+Chapter 1 - Introduction to Forecasting
+It is difficult to make predictions, especially about the future
+NEILS BOHR, Danish physicist
+
+1.1 The nature and uses of forecasts
+A forecast is a prediction of some future event or events. As suggested by Neils Bohr, making good predictions is not always easy.
+
+Forecasting is an important problem that spans many fields including business and industry, government, economics, environmental sciences,
+medicine, social science, politics, and finance.  (some Examples in each field?)
+
+Forecasting problems are often classified as short-term, medium-term, and long-term. 
+Short-term forecasting problems involve predicting events only a few time periods (days, weeks, and months) into the future. 
+Medium-term forecasts extend from 1 to 2 years into the future, and long-term forecasting problems can extend beyond that by many years.
+
+Short- and medium-term forecasts are required for activities that range from operations management to budgeting and selecting new research and development projects. 
+Long-term forecasts impact issues such as strategic planning. 
+
+Short- and medium-term forecasting is typically based on identifying, modeling, and extrapolating the patterns found in historical data. 
+Because these historical data usually exhibit inertia and do not change dramatically very quickly, statistical
+methods are very useful for short- and medium-term forecasting.
+
+A time series is a time-oriented or chronological sequence of observations on a variable of interest.
+
+The reason that forecasting is so important is that prediction of future events is a critical input into many types of planning and decision-making
+processes, with application to areas such as the following:
+
+1. Operations Management. Business organizations routinely use forecasts of product sales or demand for services in order to schedule
+production, control inventories, manage the supply chain, determine staffing requirements, and plan capacity. Forecasts may also be used
+to determine the mix of products or services to be offered and the locations at which products are to be produced.
+2. Marketing. Forecasting is important in many marketing decisions. Forecasts of sales response to advertising expenditures, new promotions, or changes in pricing polices enable businesses to evaluate
+their effectiveness, determine whether goals are being met, and make adjustments.
+3. Finance and Risk Management. Investors in financial assets are interested in forecasting the returns from their investments. These assets
+include but are not limited to stocks, bonds, and commodities; other investment decisions can be made relative to forecasts of interest
+rates, options, and currency exchange rates. Financial risk management requires forecasts of the volatility of asset returns so that
+the risks associated with investment portfolios can be evaluated and insured, and so that financial derivatives can be properly priced.
+4. Economics. Governments, financial institutions, and policy organizations require forecasts of major economic variables, such as gross
+domestic product, population growth, unemployment, interest rates, inflation, job growth, production, and consumption. These forecasts
+are an integral part of the guidance behind monetary and fiscal policy, and budgeting plans and decisions made by governments. They
+are also instrumental in the strategic planning decisions made by business organizations and financial institutions.
+5. Industrial Process Control. Forecasts of the future values of critical quality characteristics of a production process can help determine when important controllable variables in the process should be
+changed, or if the process should be shut down and overhauled. Feedback and feedforward control schemes are widely used in monitoring
+and adjustment of industrial processes, and predictions of the process
+output are an integral part of these schemes.
+6. Demography. Forecasts of population by country and regions are made routinely, often stratified by variables such as gender, age,
+and race. Demographers also forecast births, deaths, and migration patterns of populations. Governments use these forecasts for planning
+policy and social service actions, such as spending on health care, retirement programs, and antipoverty programs. Many businesses
+use forecasts of populations by age groups to make strategic plans regarding developing new product lines or the types of services that
+will be offered.
+
+
+Quantitative forecasting techniques make formal use of historical data and a forecasting model. The model formally summarizes patterns in the
+data and expresses a statistical relationship between previous and current values of the variable. Then the model is used to project the patterns in
+the data into the future. In other words, the forecasting model is used to extrapolate past and current behavior into the future. 
+
+There are several types of forecasting models in general use. The three most widely used are regression models, smoothing models, and general time series models.
+
+Regression models make use of relationships between the variable of interest and one or more related predictor variables. Sometimes regression
+models are called causal forecasting models, because the predictor variables are assumed to describe the forces that cause or drive the observed
+values of the variable of interest. An example would be using data on house purchases as a predictor variable to forecast furniture sales.
+The method of least squares is the formal basis of most regression models.
+
+Smoothing models typically employ a simple function of previous observations to provide a forecast of the variable of interest. These methods may have a
+formal statistical basis, but they are often used and justified heuristically on the basis that they are easy to use and produce satisfactory results.
+
+General time series models employ the statistical properties of the historical data to specify a formal model and then estimate the unknown parameters
+of this model (usually) by least squares.
+
+1.2 some Examples of time series 
+Time series plots can reveal patterns such as random, trends, level shifts, periods or cycles, unusual observations, or a combination of patterns.
+
+In addition to assisting in the identification of steady-state patterns, time series plots may also draw attention to the occurrence of atypical events.
+Another type of unusual event may be the failure of the data measurement or collection system.
+
+1.3 THE FORECASTING PROCESS 
+
+
+
+
