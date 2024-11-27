@@ -1,0 +1,23 @@
+The future ain’t what it used to be.
+YOGI BERRA, New York Yankees catcher
+
+2.1 Introduction
+
+Generally, we will need to distinguish between a forecast or predicted value of yt that was made at some previous time period, say, t − 𝜏, and a
+fitted value of yt that has resulted from estimating the parameters in a time series model to historical data. Note that 𝜏 is the forecast lead time. 
+
+The forecast made at time period t − 𝜏 is denoted by ŷt(t − 𝜏). There is a lot of interest in the lead − 1 forecast, which is the forecast of the observation
+in period t, yt, made one period prior, ŷt(t − 1). We will denote the fitted value of yt by ŷt.
+
+We will also be interested in analyzing forecast errors. The forecast error that results from a forecast of yt that was made at time period t − 𝜏 is
+the lead −𝝉 forecast error   et(𝜏) = yt − ŷt(t − 𝜏). (2.1)
+For example, the lead − 1 forecast error is  et(1) = yt − ŷt(t − 1).
+
+The difference between the observation yt and the value obtained by fitting a time series model to the data, or a fitted value ŷt defined earlier, is called
+a residual, and is denoted by et = yt − ŷt. (2.2)
+
+The reason for this careful distinction between forecast errors and residuals is that models usually fit historical data better than they forecast. That is,
+the residuals from a model-fitting process will almost always be smaller than the forecast errors that are experienced when that model is used to
+forecast future observations.
+
+2.2 GRAPHICAL DISPLAYS
