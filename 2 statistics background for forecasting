@@ -21,3 +21,63 @@ the residuals from a model-fitting process will almost always be smaller than th
 forecast future observations.
 
 2.2 GRAPHICAL DISPLAYS
+2.2.1 Time Series Plots
+Developing a forecasting model should always begin with graphical display and analysis of the available data.
+Many of the broad general features of a time series can be seen visually.
+
+The basic graphical display for time series data is the time series plot, a graph of yt versus the time period, t, for t = 1,2,..., T.
+Features such as trend and seasonality are usually easy to see from the time series plot.
+
+When there are two or more variables of interest, scatter plots can be useful in displaying the relationship between the variables.
+The scatter plot cannot establish a causal relationship between two variables (neither can naive statistical modeling techniques,
+such as regression), but it is useful in displaying how the variables have varied together in the historical data set.
+
+2.2.2 Plotting Smoothed Data 
+sometimes it is useful to overlay a smoothed version of the original data on the original time series plot to help reveal patterns
+in the original data.
+There are several types of data smoothers that can be employed. One of the simplest and most widely used is the orinary or simple
+moving average.
+
+A simple moving average of span N assigns weights 1/N to the most recent N observations yT, YT-1, ..., YT-N+1, and weight zero to all 
+other observations. If we let MT be the moving average, then the N-span moving average at time period T is 
+MT = (yT + yT-1 + ... + YT-N+1)/N = (1/N)sum(Yt) 
+
+Clearly, as each new observation becomes available it is added into the sum from which the moving average is computed and the oldest
+observation is discarded. 
+The moving average has less variability than the original observations; in fact, if the variance of an individual observation yt is sigma^2,
+then assuming that the observations are uncorrelated, the variance of the moving average is Var(Mt) = (sigma^2)/N
+
+Sometimes a "centered" version of the moving average is used, such as in 
+Mt = (1/(S+1))*sum(yt-i) (i from -S to S)
+where the span of the centered moving average is N = 2S + 1.
+
+The simple moving average is a linear data smoother, or a linear filter, because it replaces each observation yt with a linear combination of
+the other data points that are near to it in time. The weights in the linear combination are equal, so the linear combination here is an average.
+
+Of course, unequal weights could be used. For example, the Hanning filter is a weighted, centered moving average
+Mt(H) = 0.25*yt+1 + 0.5yt + 0.25yt-1
+
+An obvious disadvantage of a linear filter such as a moving average is that an unusual or erroneous data point or an outlier will dominate the
+moving averages that contain that observation, contaminating the moving averages for a length of time equal to the span of the filter.
+
+Odd-span moving medians (also called running medians) are an alternative to moving averages that are effective data smoothers when the time
+series may be contaminated with unusual values or outliers. The moving median of span N is defined as
+m[N]t = med(yt−u,… , yt,… , yt+u), (2.5)
+where N = 2u + 1.
+
+The median is the middle observation in rank order (or order of value). The moving median of span 3 is a very popular and
+effective data smoother, where m[3]t = med(yt−1, yt, yt+1).
+
+In general, a moving median will pass monotone sequences of data unchanged. It will follow a step function in the data, but it will eliminate
+a spike or more persistent upset in the data that has duration of at most u consecutive observations. Moving medians can be applied more than
+once if desired to obtain an even smoother series of observations.
+
+The end values are lost when using the moving median. 
+If there are a lot of observations, the information loss from the missing end values is not serious. However, if it is necessary or desirable to keep
+the lengths of the original and smoothed data sets the same, a simple way to do this is to “copy on” or add back the end values from the original data.
+
+There are also methods for smoothing the end values. Tukey (1979) is a basic reference on this subject and contains many other clever and useful
+techniques for data analysis.
+
+2.3 Nemerical Description of Time Series data 
+
