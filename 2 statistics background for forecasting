@@ -80,4 +80,46 @@ There are also methods for smoothing the end values. Tukey (1979) is a basic ref
 techniques for data analysis.
 
 2.3 Nemerical Description of Time Series data 
+2.3.1 Stationary Time Series
+A very important type of time series is a stationary time series. A time series is said to be strictly stationary if its properties are not affected by a change in the time origin.
+That is, if the joint probability distribution of the observations yt, yt+1,… , yt+n is exactly the same as the joint probability distribution of the observations yt+k, yt+k+1,… , yt+k+n then the
+time series is strictly stationary. When n = 0 the stationarity assumption means that the probability distribution of yt is the same for all time periods and can be written as f(y).
+
+Note that both time series seem to vary around a fixed level. Based on the earlier definition, this is a characteristic of stationary time series.
+Stationary implies a type of statistical equilibrium or stability in the data.
+
+2.3.2 Autocovariance and Autocorrelation Functions
+The covariance between yt and its value at another time period, say, yt+k
+is called the autocovariance at lag k, defined by
+𝛾k = Cov(yt, yt+k) = E[(yt − 𝜇)(yt+k − 𝜇)]. (2.10)
+The collection of the values of 𝛾k, k = 0, 1, 2,… is called the autocovariance function. Note that the autocovariance at lag k = 0 is just the variance of the time series; that is, 𝛾0 = 𝜎2
+y ,which is constant for a stationary time series. The autocorrelation coefficient at lag k for a stationary time
+series is
+𝜌k = E[(yt − 𝜇)(yt+k − 𝜇)]/(√E[(yt − 𝜇)2]E[(yt+k − 𝜇)2]) = Cov(yt, yt+k)/Var(yt) = 𝛾k/𝛾0 (2.11)
+The collection of the values of 𝜌k, k = 0, 1, 2,… is called the autocorrelation function (ACF). Note that by definition 𝜌0 = 1.
+Furthermore, 𝜌k = 𝜌−k; that is, the ACF is symmetric around zero, so it is only necessary to compute the positive (or negative) half.
+
+Instead of cutting off or tailing off near zero after a few lags, this sample ACF is very persistent; that is, it decays very slowly and exhibits sample autocorrelations that are still rather large
+even at long lags. This behavior is characteristic of a nonstationary time series. Generally, if the sample ACF does not dampen out within about 15 to 20 lags, the time series is nonstationary.
+
+2.3.3 The Variogram
+We have discussed two techniques for determining if a time series is nonstationary, plotting a reasonable long series of the data to see if it drifts
+or wanders away from its mean for long periods of time, and computing the sample ACF. However, often in practice there is no clear demarcation 
+between a stationary and a nonstationary process for many real-world time series. An additional diagnostic tool that is very useful is the variogram.
+
+Suppose that the time series observations are represented by yt. The variogram Gk measures variances of the differences between observations
+that are k lags apart, relative to the variance of the differences that are one time unit apart (or at lag 1). The variogram is defined mathematically as
+Gk = Var (yt+k − yt) / Var (yt+1 − yt) k = 1, 2,… (2.16)
+and the values of Gk are plotted as a function of the lag k. If the time series is stationary, it turns out that Gk = (1 − 𝜌k)/(1 − 𝜌1),
+but for a stationary time series 𝜌k → 0 as k increases, so when the variogram is plotted against lag k, Gk will reach an asymptote 1∕(1 − 𝜌1). However,
+if the time series is nonstationary, Gk will increase monotonically.
+
+
+
+
+
+
+
+
+
 
