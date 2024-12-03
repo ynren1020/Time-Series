@@ -89,12 +89,10 @@ Note that both time series seem to vary around a fixed level. Based on the earli
 Stationary implies a type of statistical equilibrium or stability in the data.
 
 2.3.2 Autocovariance and Autocorrelation Functions
-The covariance between yt and its value at another time period, say, yt+k
-is called the autocovariance at lag k, defined by
+The covariance between yt and its value at another time period, say, yt+k is called the autocovariance at lag k, defined by
 𝛾k = Cov(yt, yt+k) = E[(yt − 𝜇)(yt+k − 𝜇)]. (2.10)
 The collection of the values of 𝛾k, k = 0, 1, 2,… is called the autocovariance function. Note that the autocovariance at lag k = 0 is just the variance of the time series; that is, 𝛾0 = 𝜎2
-y ,which is constant for a stationary time series. The autocorrelation coefficient at lag k for a stationary time
-series is
+y ,which is constant for a stationary time series. The autocorrelation coefficient at lag k for a stationary time series is
 𝜌k = E[(yt − 𝜇)(yt+k − 𝜇)]/(√E[(yt − 𝜇)2]E[(yt+k − 𝜇)2]) = Cov(yt, yt+k)/Var(yt) = 𝛾k/𝛾0 (2.11)
 The collection of the values of 𝜌k, k = 0, 1, 2,… is called the autocorrelation function (ACF). Note that by definition 𝜌0 = 1.
 Furthermore, 𝜌k = 𝜌−k; that is, the ACF is symmetric around zero, so it is only necessary to compute the positive (or negative) half.
@@ -114,7 +112,7 @@ and the values of Gk are plotted as a function of the lag k. If the time series 
 but for a stationary time series 𝜌k → 0 as k increases, so when the variogram is plotted against lag k, Gk will reach an asymptote 1∕(1 − 𝜌1). However,
 if the time series is nonstationary, Gk will increase monotonically.
 
-
+2.4 USE OF DATA TRANSFORMATIONS AND ADJUSTMENTS
 
 
 
