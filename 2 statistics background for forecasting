@@ -165,8 +165,61 @@ The additive model is appropriate if the magnitude (amplitude) of the seasonal v
 multiplicative version is more appropriate if the amplitude of the seasonal fluctuations increases or decreases with the average level of the time series.
 
 2.5 GENERAL APPROACH TO TIME SERIES MODELING AND FORECASTING
+The basic steps in modeling and forecasting a time series are as follows:
+1. Plot the time series and determine its basic features, such as whether trends or seasonal behavior or both are present. Look for possible
+outliers or any indication that the time series has changed with respect to its basic features (such as trends or seasonality) over the time period
+history.
 
+2. Eliminate any trend or seasonal components, either by differencing or by fitting an appropriate model to the data. Also consider using data
+transformations, particularly if the variability in the time series seems to be proportional to the average level of the series. The objective of
+these operations is to produce a set of stationary residuals.
 
+3. Develop a forecasting model for the residuals. It is not unusual to find that there are several plausible models, and additional analysis will
+have to be performed to determine the best one to deploy. Sometimes potential models can be eliminated on the basis of their fit to the
+historical data. It is unlikely that a model that fits poorly will produce good forecasts.
+
+4. Validate the performance of the model (or models) from the previous step. This will probably involve some type of split-sample or crossvalidation procedure. The objective of this step is to select a model
+to use in forecasting.
+
+5. Also of interest are the differences between the original time series yt and the values that would be forecast by the model on the original
+scale. To forecast values on the scale of the original time series yt, reverse the transformations and any differencing adjustments made
+to remove trends or seasonal effects.
+
+6. For forecasts of future values in period T + 𝜏 on the original scale, if a transformation was used, say, xt = ln yt, then the forecast made
+at the end of period T for T + 𝜏 would be obtained by reversing the transformation.
+
+7. If prediction intervals are desired for the forecast (and we recommend doing this), construct prediction intervals for the residuals and
+then reverse the transformations made to produce the residuals as described earlier.
+
+8. Develop and implement a procedure for monitoring the forecast to ensure that deterioration in performance will be detected reasonably
+quickly. Forecast monitoring is usually done by evaluating the stream of forecast errors that are experienced.
+
+Note: Why is it important to have stationary residuals by doing data transformation before fitting models for time series data
+Ensuring that residuals are stationary in time series analysis is crucial for several reasons:
+Model Assumptions: Many time series models, such as ARIMA, assume that the data are stationary. Stationarity implies that the statistical properties of the series (mean, variance, autocorrelation) do not change over time. If the residuals are non-stationary, it indicates that the model has not captured all the underlying patterns in the data.
+Predictive Accuracy: A model with stationary residuals is generally more reliable for forecasting because it indicates that the model has effectively captured the signal in the data, leaving only random noise. Non-stationary residuals suggest that important structures or trends in the data have been missed.
+Statistical Inference: Stationary residuals allow for more valid statistical inference, as many inferential techniques rely on the assumption of stationarity. This affects the confidence intervals and hypothesis tests related to model parameters.
+Error Independence: Stationarity often implies that residuals are independent over time. Independence is a key assumption for many statistical tests and indicates that the model has adequately explained the temporal dependencies in the data.
+Improved Diagnostics: When residuals are stationary, diagnostic checks like autocorrelation functions (ACF) and partial autocorrelation functions (PACF) are more interpretable, allowing for better model refinement and validation.
+Transforming data to achieve stationarity might involve differencing, detrending, or applying logarithmic, square root, or other transformations. These adjustments help ensure that the model accurately represents the underlying process and can provide reliable predictions.
+
+2.6 EVALUATING AND MONITORING FORECASTING MODEL PERFORMANCE
+2.6.1 Forecasting Model Evaluation
+We now consider how to evaluate the performance of a forecasting technique for a particular time series or application. It is important to carefully
+define the meaning of performance. It is tempting to evaluate performance on the basis of the fit of the forecasting or time series model to historical data. 
+There are many statistical measures that describe how well a model fits a given sample of data, and several of these will be described in subsequent chapters. 
+This goodness-of-fit approach often uses the residuals and does not really reflect the capability of the forecasting technique to
+successfully predict future observations. The user of the forecasts is very concerned about the accuracy of future forecasts, not model goodness of
+fit, so it is important to evaluate this aspect of any recommended technique. Sometimes forecast accuracy is called “out-of-sample” forecast error, to
+distinguish it from the residuals that arise from a model-fitting process.
+
+Measure of forecast accuracy should always be evaluated as part of a model validation effort. When more than one forecasting technique seems
+reasonable for a particular application, these forecast accuracy measures can also be used to discriminate between competing models.
+
+If a time series consists of uncorrelated observations and has constant variance, we say that it is white noise. If, in addition, the observations
+in this time series are normally distributed, the time series is Gaussian white noise. Ideally, forecast errors are Gaussian white noise.
+
+2.6.2 Choosing Between Competing Models
 
 
 
