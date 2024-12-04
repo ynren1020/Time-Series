@@ -113,7 +113,58 @@ but for a stationary time series 𝜌k → 0 as k increases, so when the variogr
 if the time series is nonstationary, Gk will increase monotonically.
 
 2.4 USE OF DATA TRANSFORMATIONS AND ADJUSTMENTS
+2.4.1 Transformations
+Data transformations are useful in many aspects of statistical work, often for stabilizing the variance of the data. Nonconstant variance is quite common in time series data.
+A very popular type of data transformation to deal with nonconstant variance is the power family of transformations.
 
+The log transformation is used frequently in situations where the variability in the original time series increases with the average level of the series.
+When the standard deviation of the original series increases linearly with the mean, the log transformation is in fact an optimal variance stabilizing transformation. The log transformation also has a very nice
+physical interpretation as percentage change.
+The approximate percentage change in yt can be calculated from the differences of the log-transformed time series xt ≅ 100[ln(yt) − ln(yt−1)].
+
+2.4.2 Trend and Seasonal Adjustments
+In addition to transformations, there are also several types of adjustments that are useful in time series modeling and forecasting. Two of the most
+widely used are trend adjustments and seasonal adjustments. Sometimes these procedures are called trend and seasonal decomposition.
+
+A time series that exhibits a trend is a nonstationary time series.
+
+Modeling and forecasting of such a time series is greatly simplified if we can eliminate the trend. 
+One way to do this is to fit a regression model describing the trend component to the data and then subtracting it out of the original observations, leaving a set of residuals that are free of trend.
+
+The trend models that are usually considered are the linear trend, in which the mean of yt is expected to change linearly with time as in
+E(yt) = 𝛽0 + 𝛽1t (2.19)
+or as a quadratic function of time
+E(yt) = 𝛽0 + 𝛽1t + 𝛽2t2 (2.20)
+or even possibly as an exponential function of time such as
+E(yt) = 𝛽0e𝛽1t. (2.21)
+The models in Eqs. (2.19)–(2.21) are usually fit to the data by using ordinary least squares.
+
+Another approach to removing trend is by differencing the data; that is, applying the difference operator to the original time series to obtain a new
+time series, say, xt = yt − yt−1 = ∇yt, (2.22)
+where ∇ is the (backward) difference operator. Another way to write the differencing operation is in terms of a backshift operator B, defined as
+Byt = yt−1, so xt = (1 − B)yt = ∇yt = yt − yt−1 (2.23) with ∇ = (1 − B). Differencing can be performed successively if necessary until the trend is removed.
+
+Differencing has two advantages relative to fitting a trend model to the data. First, it does not require estimation of any parameters, so it is a more
+parsimonious (i.e., simpler) approach; and second, model fitting assumes that the trend is fixed throughout the time series history and will remain
+so in the (at least immediate) future. In other words, the trend component, once estimated, is assumed to be deterministic. Differencing can allow
+the trend component to change through time. The first difference accounts for a trend that impacts the change in the mean of the time series, the
+second difference accounts for changes in the slope of the time series, and so forth. Usually, one or two differences are all that is required in practice
+to remove an underlying trend in the data.
+
+Seasonal, or both trend and seasonal, components are present in many time series. Differencing can also be used to eliminate seasonality. Define
+a lag—d seasonal difference operator as ∇dyt = (1 − B^d) = yt − yt−d. (2.26) For example, if we had monthly data with an annual season (a very common
+situation), we would likely use d = 12, so the seasonally differenced data would be ∇12yt = (1 − B12)yt = yt − yt−12.
+When both trend and seasonal components are simultaneously present, we can sequentially difference to eliminate these effects. That is, 
+first seasonally difference to remove the seasonal component and then difference one or more times using the regular difference operator to remove the trend.
+
+There is also a “classical” approach to decomposition of a time series into trend and seasonal components. The general mathematical model for this decomposition is
+yt = f(St, Tt, 𝜀t), where St is the seasonal component, Tt is the trend effect (sometimes called the trend-cycle effect), and 𝜀t is the random error component. There are
+usually two forms for the function f ; an additive model yt = St + Tt + 𝜀t and a multiplicative model yt = StTt𝜀t.
+
+The additive model is appropriate if the magnitude (amplitude) of the seasonal variation does not vary with the level of the series, while the
+multiplicative version is more appropriate if the amplitude of the seasonal fluctuations increases or decreases with the average level of the time series.
+
+2.5 GENERAL APPROACH TO TIME SERIES MODELING AND FORECASTING
 
 
 
