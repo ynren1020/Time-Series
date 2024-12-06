@@ -220,6 +220,38 @@ If a time series consists of uncorrelated observations and has constant variance
 in this time series are normally distributed, the time series is Gaussian white noise. Ideally, forecast errors are Gaussian white noise.
 
 2.6.2 Choosing Between Competing Models
+Selecting the model that provides the best fit to historical data generally does not result in a forecasting method that produces the best forecasts
+of new data. Concentrating too much on the model that produces the best historical fit often results in overfitting, or including too many parameters or terms 
+in the model just because these additional terms improve the model fit. In general, the best approach is to select the model that
+results in the smallest standard deviation (or mean squared error) of the one-step-ahead forecast errors when the model is applied to data that
+were not used in the fitting process. Some authors refer to this as an out-of-sample forecast error standard deviation (or mean squared error). A
+standard way to measure this out-of-sample performance is by utilizing some form of data splitting; that is, divide the time series data into two
+segments—one for model fitting and the other for performance testing.
+Sometimes data splitting is called cross-validation. It is somewhat arbitrary as to how the data splitting is accomplished. However, a good rule of
+thumb is to have at least 20 or 25 observations in the performance testing data set.
+
+2.6.3 Monitoring a Forecasting Model
+Developing and implementing procedures to monitor the performance of the forecasting model is an essential component of good forecasting system
+design. No matter how much effort has been expended in developing the forecasting model, and regardless of how well the model works initially,
+over time it is likely that its performance will deteriorate. The underlying pattern of the time series may change, either because the internal inertial
+forces that drive the process may evolve through time, or because of external events such as new customers entering the market. It is also possible for 
+the inherent variability in the data to increase. Consequently, performance monitoring is important.
+
+The one-step-ahead forecast errors et(1) are typically used for forecast monitoring. The reason for this is that changes in the underlying time series
+will also typically be reflected in the forecast errors. For example, if a level change occurs in the time series, the sequence of forecast errors will no
+longer fluctuate around zero; that is, a positive or negative bias will be introduced.
+
+There are several ways to monitor forecasting model performance. The simplest way is to apply Shewhart control charts to the forecast errors. A
+Shewhart control chart is a plot of the forecast errors versus time containing a center line that represents the average (or the target value) of the forecast
+errors and a set of control limits that are designed to provide an indication that the forecasting model performance has changed. The center line is
+usually taken as either zero (which is the anticipated forecast error for an unbiased forecast) or the average forecast error (ME from Eq. (2.32)),
+and the control limits are typically placed at three standard deviations of the forecast errors above and below the center line. If the forecast
+errors plot within the control limits, we assume that the forecasting model performance is satisfactory (or in control), but if one or more forecast errors
+exceed the control limits, that is a signal that something has happened and the forecast errors are no longer fluctuating around zero. In control chart
+terminology, we would say that the forecasting process is out of control and some analysis is required to determine what has happened.
+
+
+
 
 
 
